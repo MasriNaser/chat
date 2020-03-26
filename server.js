@@ -1,9 +1,38 @@
 const path = require('path');
+const http = require('http');
 const express = require('express');
+const socketio = require('socket.io');
 
-const app = express(path.join(__dirname, 'public'));
-app.use(express.static());
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
 
-const PORT = 3000 || process.env.PORT;
+// breng static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// run when cleint connect
+io.on('connection', socket => {
+  // console.log('new ws connection...');
+
+  socket.emit('sms', 'Welcome here!');
+
+  // broadcast user connects not the user who connects
+  socket.broadcast.emit('sms', 'A user has joined the chat');
+
+  // to everyone
+  // io.emit();
+
+  // client is left
+  socket.on('disconnect', () => {
+    io.emit('sms', 'A user left!');
+  });
+  // Listen for chatSms
+  socket.on('chatMessage', msgInput => {
+    // console.log(msgInput);
+    io.emit('sms', msgInput);
+  });
+});
+
+const PORT = 3003 || process.env.PORT;
+
+server.listen(PORT, () => console.log(`shit is here ${PORT}`));
