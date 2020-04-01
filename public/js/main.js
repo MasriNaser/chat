@@ -10,7 +10,7 @@ const { username, room } = Qs.parse(location.search, {
 console.log(username, 'this is from url');
 
 const socket = io();
-// console.log(socket);
+// console.log(socket); 
 
 // join chatroom
 socket.emit('joinRoom', { username, room });

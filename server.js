@@ -16,7 +16,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-// breng static folder
+// Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // admain var

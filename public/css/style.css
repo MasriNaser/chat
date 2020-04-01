@@ -28,12 +28,23 @@ ul {
 a {
   text-decoration: none;
 }
+@keyframes infinite-spinning {
+  from {
+    transform: rotate(0deg);
+    background-color: var(--dark-color-a);
+  }
+  to {
+    transform: rotate(360deg);
+    background-color: var(--success-color);
+  }
+}
 
 .btn {
+  animation: infinite-spinning 1s ease forwards;
   cursor: pointer;
   padding: 5px 15px;
   background: var(--light-color);
-  color: var(--dark-color-a);
+  color: var(--light-color);
   border: 0;
   font-size: 17px;
 }
