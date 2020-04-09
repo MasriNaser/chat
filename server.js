@@ -36,13 +36,12 @@ io.on('connection', socket => {
         'sms',
         formatMessage(botName, `${user.username} has joined the chat`)
       );
+    // send users and room info
+    io.to(user.room).emit('roomUsers', {
+      room: user.room,
+      users: getRoomUsers(user.room)
+    });
   });
-
-  // console.log('new ws connection...');
-
-  // to everyone
-  // io.emit();
-
   // client is left
   socket.on('disconnect', () => {
     const user = userLeave(socket.id);
@@ -52,13 +51,16 @@ io.on('connection', socket => {
         'sms',
         formatMessage(botName, `${user.username} has left:(`)
       );
+      // send users and room info
+      io.to(user.room).emit('roomUsers', {
+        room: user.room,
+        users: getRoomUsers(user.rrom)
+      });
     }
   });
   // Listen for chatSms
   socket.on('chatMessage', msgInput => {
     const user = getCurrentUser(socket.id);
-    // console.log(user, 'is the user');
-    // console.log(msgInput);
     io.to(user.room).emit('sms', formatMessage(user.username, msgInput));
   });
 });

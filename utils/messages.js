@@ -1,3 +1,4 @@
+// time is time right now.
 const moment = require('moment');
 function formatMessage(username, text) {
   return {

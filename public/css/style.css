@@ -188,12 +188,15 @@ a {
   margin-top: 20px;
   width: 100%;
 }
+p.meta {
+  display: flex;
+  justify-content: space-between;
+}
 
 @media (max-width: 700px) {
   .chat-main {
     display: block;
   }
-
   .chat-sidebar {
     display: none;
   }
