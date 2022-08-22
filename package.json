@@ -5,9 +5,9 @@
   "description": "chat with rooms",
   "main": "server.js",
   "scripts": {
+    "deploy": "gh-pages -d build",
     "start": "node server",
     "dev": "nodemon server",
-    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +20,7 @@
     "url": "https://github.com/MasriNaser/chat/issues"
   },
   "dependencies": {
+    "deploy": "^1.0.3",
     "express": "^4.17.1",
     "moment": "^2.29.4",
     "socket.io": "^2.5.0"
