@@ -66,16 +66,3 @@ function outputUsers(users) {
   ${users.map(user => `<li>${user.username}</li>`).join('')}
   `;
 }
-
-// deploy
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDXZIT7ahVE9jZVIE_ce-_eFhLiH9NAFww",
-  authDomain: "chat-exx.firebaseapp.com",
-  databaseURL: "https://chat-exx.firebaseio.com",
-  projectId: "chat-exx",
-  storageBucket: "chat-exx.appspot.com",
-  messagingSenderId: "452794203839",
-  appId: "1:452794203839:web:a5345509d7673485ed900a",
-  measurementId: "G-Y9FNC9B8Z5"
-};
